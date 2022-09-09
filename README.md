@@ -7,14 +7,26 @@
 
 ### index.hta
 ```
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<script language="VBScript">
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script language="VBScript">
 Function Test()
 
-    MsgBox("あいうえお")
+        Dim message: message = document.getElementById("item1").value
+        MsgBox(message)
 
 End Function
-</script>
-<input type="text" id="item1">
-<input type="button" id="btn1" value="実行" onclick='Call Test()'>
+    </script>
+</head>
+
+<body>
+
+    <input type="text" id="item1">
+    <input type="button" id="btn1" value="実行" onclick='Call Test()'>
+
+</body>
+
+</html>
 ```
