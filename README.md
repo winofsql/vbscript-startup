@@ -14,5 +14,5 @@ Function Test()
 End Function
 </script>
 <input type="text" id="item1">
-<input type="button" id="btn1" value="ŽÀs" onClick='Call Test()'>
+<input type="button" id="btn1" value="実行" onClick='Call Test()'>
 ```
