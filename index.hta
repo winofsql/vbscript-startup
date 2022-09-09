@@ -1,9 +1,22 @@
-<script language="VBScript">
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script language="VBScript">
 Function Test()
 
-    MsgBox("‚±‚ñ‚É‚¿‚Í")
+        Dim message: message = document.getElementById("item1").value
+        MsgBox(message)
 
 End Function
-</script>
-<input type="text" id="item1">
-<input type="button" id="btn1" value="ŽÀs" onClick='Call Test()'>
+    </script>
+</head>
+
+<body>
+
+    <input type="text" id="item1">
+    <input type="button" id="btn1" value="å®Ÿè¡Œ" onclick='Call Test()'>
+
+</body>
+
+</html>
