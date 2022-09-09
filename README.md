@@ -6,13 +6,14 @@
 
 
 ```
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <script language="VBScript">
 Function Test()
 
-    MsgBox("こんにちは世界")
+    MsgBox("あいうえお")
 
 End Function
 </script>
 <input type="text" id="item1">
-<input type="button" id="btn1" value="実行" onClick='Call Test()'>
+<input type="button" id="btn1" value="実行" onclick='Call Test()'>
 ```
