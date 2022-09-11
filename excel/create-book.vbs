@@ -1,12 +1,12 @@
 ' ****************************
 ' アプリケーション実行用
 ' ****************************
-Set WshShell = CreateObject( "WScript.Shell" )
+set WshShell = CreateObject( "WScript.Shell" )
 
 ' ****************************
 ' Excel オブジェクト作成
 ' ****************************
-Set App = CreateObject("Excel.Application")
+set App = CreateObject("Excel.Application")
 App.Visible = True  ' デバッグ中は、Excel を表示
 
 ' ****************************
@@ -22,7 +22,7 @@ App.Workbooks.Add()
 ' ****************************
 ' 追加したブックを取得
 ' ****************************
-Set Workbook = App.Workbooks( App.Workbooks.Count )
+set Workbook = App.Workbooks( App.Workbooks.Count )
 
 ' ****************************
 ' 現状、ブックにはシート一つ
@@ -30,14 +30,14 @@ Set Workbook = App.Workbooks( App.Workbooks.Count )
 ' 必要であれば、Book.Worksheets.Count
 ' で現在のシートの数を取得できます
 ' ****************************
-Set Worksheet = Workbook.Worksheets( 1 )
+set Worksheet = Workbook.Worksheets( 1 )
 
 ' ****************************
 ' Add では 第二引数に指定した
 ' オブジェクトのシートの直後に、
 ' 新しいシートを追加します。
 ' ****************************
-Call Workbook.Worksheets.Add(,Worksheet)
+call Workbook.Worksheets.Add(,Worksheet)
 
 ' ****************************
 ' シート名設定
@@ -55,7 +55,7 @@ Workbook.Sheets(1).Activate()
 Workbook.Sheets(1).Range("B2").Select()
 ' https://docs.microsoft.com/ja-jp/office/vba/api/excel.xlautofilltype
 on error resume next
-Call App.Selection.AutoFill( Workbook.Sheets(1).Range("B2:B20"), 2 )
+call App.Selection.AutoFill( Workbook.Sheets(1).Range("B2:B20"), 2 )
 if Err.Number <> 0 then
     MsgBox( "ERROR : " & Err.Description )
     App.Quit()
@@ -69,12 +69,12 @@ on error goto 0
 ' の番号です
 ' ****************************
 FilePath = App.GetSaveAsFilename(,"Excel ファイル (*.xlsx), *.xlsx", 1)
-if FilePath = "False" Then
+if FilePath = "False" then
     MsgBox "Excel ファイルの保存選択がキャンセルされました"
     WorkBook.Saved = True
     App.Quit()
     Wscript.Quit()
-End If
+end if
 
 ' ****************************
 ' 保存
@@ -97,4 +97,4 @@ App.Quit()
 
 MsgBox( "処理が終了しました" )
 
-Call WshShell.Run( "RunDLL32.EXE shell32.dll,ShellExec_RunDLL " + FilePath )
+call WshShell.Run( "RunDLL32.EXE shell32.dll,ShellExec_RunDLL " + FilePath )
