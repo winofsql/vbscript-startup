@@ -1,7 +1,13 @@
 ' ****************************
+' アプリケーション実行用
+' ****************************
+Set WshShell = CreateObject( "WScript.Shell" )
+
+' ****************************
 ' Excel オブジェクト作成
 ' ****************************
 Set App = CreateObject("Excel.Application")
+App.Visible = True  ' デバッグ中は、Excel を表示
 
 ' ****************************
 ' 警告を出さないようにする
@@ -25,7 +31,6 @@ Set Workbook = App.Workbooks( App.Workbooks.Count )
 ' で現在のシートの数を取得できます
 ' ****************************
 Set Worksheet = Workbook.Worksheets( 1 )
-Worksheet.Activate()
 
 ' ****************************
 ' Add では 第二引数に指定した
@@ -43,18 +48,18 @@ Workbook.Sheets(2).Name = "追加シート"
 ' ****************************
 ' データ操作
 ' ****************************
-Workbook.Sheets(1).Activate()
-Workbook.Sheets(1).Cells(1, 2) = "社員コード"
-Workbook.Sheets(1).Range("B2") = "0001"
+Workbook.Sheets(1).Cells(1, 2).Value = "社員コード"
+Workbook.Sheets(1).Range("B2").Value = "0001"
 
+Workbook.Sheets(1).Activate()
 Workbook.Sheets(1).Range("B2").Select()
 ' https://docs.microsoft.com/ja-jp/office/vba/api/excel.xlautofilltype
 on error resume next
 Call App.Selection.AutoFill( Workbook.Sheets(1).Range("B2:B20"), 2 )
 if Err.Number <> 0 then
-	MsgBox( "ERROR : " & Err.Description )
-	App.Quit()
-	Wscript.Quit()
+    MsgBox( "ERROR : " & Err.Description )
+    App.Quit()
+    Wscript.Quit()
 end if
 on error goto 0
 
@@ -65,10 +70,10 @@ on error goto 0
 ' ****************************
 FilePath = App.GetSaveAsFilename(,"Excel ファイル (*.xlsx), *.xlsx", 1)
 if FilePath = "False" Then
-	MsgBox "Excel ファイルの保存選択がキャンセルされました"
-	WorkBook.Saved = True
-	App.Quit()
-	Wscript.Quit()
+    MsgBox "Excel ファイルの保存選択がキャンセルされました"
+    WorkBook.Saved = True
+    App.Quit()
+    Wscript.Quit()
 End If
 
 ' ****************************
@@ -79,9 +84,9 @@ End If
 on error resume next
 Workbook.SaveAs( FilePath )
 if Err.Number <> 0 then
-	MsgBox( "ERROR : " & Err.Description )
-	App.Quit()
-	Wscript.Quit()
+    MsgBox( "ERROR : " & Err.Description )
+    App.Quit()
+    Wscript.Quit()
 end if
 on error goto 0
 
@@ -91,3 +96,5 @@ on error goto 0
 App.Quit()
 
 MsgBox( "処理が終了しました" )
+
+Call WshShell.Run( "RunDLL32.EXE shell32.dll,ShellExec_RunDLL " + FilePath )
