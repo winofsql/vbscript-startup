@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <job>
-<script language=VBScript>
-' ���{��Ƃ��Ĕ��f����̂ɂ�����x�̒����̕����񂪕K�v
-MsgBox("����ɂ��͐��E")
+<script language="VBScript">
+' 日本語として判断するのにある程度の長さの文字列が必要
+MsgBox("こんにちは世界")
 
 </script>
 </job>
