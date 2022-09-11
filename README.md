@@ -15,8 +15,8 @@
     <script language="VBScript">
 Function Test()
 
-        Dim message: message = document.getElementById("item1").value
-        MsgBox(message)
+    Dim message: message = document.getElementById("item1").value
+    MsgBox(message)
 
 End Function
     </script>
