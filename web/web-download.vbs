@@ -9,5 +9,5 @@ objSrvHTTP.Send
 Stream.Open
 Stream.Type = 1
 Stream.Write objSrvHTTP.responseBody
-Stream.SaveToFile subject2-main.zip, 2
+Stream.SaveToFile "subject2-main.zip", 2
 Stream.Close
