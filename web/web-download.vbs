@@ -1,7 +1,7 @@
-Set objSrvHTTP = Wscript.CreateObject("Msxml2.ServerXMLHTTP")
-Set Stream = Wscript.CreateObject("ADODB.Stream")
+set objSrvHTTP = Wscript.CreateObject("Msxml2.ServerXMLHTTP")
+set Stream = Wscript.CreateObject("ADODB.Stream")
 
-Dim url : url = "https://github.com/winofsql/subject2/archive/refs/heads/main.zip"
+dim url : url = "https://github.com/winofsql/subject2/archive/refs/heads/main.zip"
 
 call objSrvHTTP.Open("GET", url, False )
 objSrvHTTP.Send
