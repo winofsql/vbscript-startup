@@ -1,4 +1,3 @@
-
 Set objSrvHTTP = Wscript.CreateObject("Msxml2.ServerXMLHTTP")
 Set Stream = Wscript.CreateObject("ADODB.Stream")
 
